@@ -19,7 +19,7 @@ namespace SharpGeoApi.Controllers
             //externalUri = configuration["externalUri"];
         }
 
-        [HttpGet]
+        [HttpGet, FormatFilter]
         public string Get()
         {
             // todo: return openapi spec (how?)

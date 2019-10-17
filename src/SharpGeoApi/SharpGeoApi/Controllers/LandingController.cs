@@ -23,7 +23,7 @@ namespace SharpGeoApi.Controllers
             externalUri = configuration["externalUri"];
         }
 
-        [HttpGet]
+        [HttpGet, FormatFilter]
         public LandingObject Get()
         {
             var rootObject = new LandingObject();

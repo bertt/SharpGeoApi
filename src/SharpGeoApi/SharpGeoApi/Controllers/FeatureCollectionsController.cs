@@ -22,7 +22,7 @@ namespace SharpGeoApi.Controllers
             externalUri = configuration["externalUri"];
         }
 
-        [HttpGet]
+        [HttpGet, FormatFilter]
         public FeatureCollections Get()
         {
             var featureCollections = new FeatureCollections();
@@ -34,7 +34,7 @@ namespace SharpGeoApi.Controllers
             return featureCollections;
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id}"), FormatFilter]
         public FeatureCollection Get(string id)
         {
             var featureCollection = new FeatureCollection();

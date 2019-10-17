@@ -9,8 +9,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using SharpGeoApi.Services.FormatFilters;
 using SharpGeoApi.Services.Formatters;
 
 namespace SharpGeoApi
@@ -31,7 +33,8 @@ namespace SharpGeoApi
                 .AddControllers(opt => opt.OutputFormatters.Add(new HtmlMediaTypeFormatter()))
                 .AddXmlSerializerFormatters().
                 AddJsonOptions(options => {options.JsonSerializerOptions.IgnoreNullValues = true;});
-
+            services.AddMvc(opt => opt.FormatterMappings.SetMediaTypeMappingForFormat("html", new Microsoft.Net.Http.Headers.MediaTypeHeaderValue("text/html")));
+            services.Replace(ServiceDescriptor.Singleton<FormatFilter, CustomFormatFilter>());
             services.AddSingleton(Configuration);
         }
 

@@ -20,7 +20,7 @@ namespace SharpGeoApi.Controllers
             externalUri = configuration["externalUri"];
         }
 
-        [HttpGet]
+        [HttpGet, FormatFilter]
         public IEnumerable<Process> Get()
         {
             var process = new Process();
