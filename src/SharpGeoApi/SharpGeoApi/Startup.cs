@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using SharpGeoApi.Services.Formatters;
 
 namespace SharpGeoApi
 {
@@ -26,9 +27,10 @@ namespace SharpGeoApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers().AddXmlSerializerFormatters().AddJsonOptions(options => {
-                options.JsonSerializerOptions.IgnoreNullValues = true;
-            });
+            services
+                .AddControllers(opt => opt.OutputFormatters.Add(new HtmlMediaTypeFormatter()))
+                .AddXmlSerializerFormatters().
+                AddJsonOptions(options => {options.JsonSerializerOptions.IgnoreNullValues = true;});
 
             services.AddSingleton(Configuration);
         }
