@@ -3,13 +3,7 @@
 namespace SharpGeoApi.Core
 {
 
-    public class Rootobject
-    {
-        public List<Collections> Collections { get; set; }
-        public List<Link> Links { get; set; }
-    }
-
-    public class Collections
+    public class FeatureCollection
     {
         public List<Link> links { get; set; }
         public string id { get; set; }
