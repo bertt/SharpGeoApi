@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SharpGeoApi.Core
+﻿namespace SharpGeoApi.Core
 {
     public class Input
     {
@@ -10,5 +6,4 @@ namespace SharpGeoApi.Core
         public string Value { get; set; }
         public string Type { get; set; }
     }
-
 }

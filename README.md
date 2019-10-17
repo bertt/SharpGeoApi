@@ -10,6 +10,11 @@ First milestone: serve local GeoJSON files
 
 Second milestone: Add GDAL/OGR backend for more formats 
 
+## Mediatypes
+
+Default mediatype is application/json. Mediatype text/html is supported in querystring using the f=html parameter or in 
+the request header (accept: text/html).
+
 ## Sample api requests:
 
 / : Returns landing page

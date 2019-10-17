@@ -4,5 +4,4 @@
     {
         public string MimeType { get; set; }
     }
-
 }

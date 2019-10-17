@@ -15,7 +15,6 @@ namespace SharpGeoApi.Services.FormatFilters
 
         public override string GetFormat(ActionContext context)
         {
-            // var format = context.GetValueFromHeader(key) ?? context.GetValueFromRouteData(key) ?? context.GetValueFromQueryString(key);
             var format = context.GetValueFromHeader(key) ?? context.GetValueFromQueryString(key);
             return format;
         }

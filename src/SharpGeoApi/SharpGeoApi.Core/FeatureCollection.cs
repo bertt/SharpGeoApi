@@ -2,7 +2,6 @@
 
 namespace SharpGeoApi.Core
 {
-
     public class FeatureCollection
     {
         public List<Link> links { get; set; }

@@ -16,7 +16,7 @@ namespace SharpGeoApi.Controllers
         {
             _logger = logger;
             _configuration = configuration;
-            //externalUri = configuration["externalUri"];
+            externalUri = configuration["externalUri"];
         }
 
         [HttpGet, FormatFilter]

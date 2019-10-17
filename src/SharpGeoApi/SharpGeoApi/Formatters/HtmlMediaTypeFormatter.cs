@@ -13,8 +13,8 @@ namespace SharpGeoApi.Services.Formatters
             SupportedMediaTypes.Add(MediaTypeHeaderValue.Parse("text/html"));
             SupportedEncodings.Add(Encoding.UTF8);
             SupportedEncodings.Add(Encoding.Unicode);
-
         }
+
         public override Task WriteResponseBodyAsync(OutputFormatterWriteContext context, Encoding selectedEncoding)
         {
             var sb = new StringBuilder();
