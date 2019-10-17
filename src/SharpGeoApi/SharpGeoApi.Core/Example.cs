@@ -4,7 +4,7 @@ namespace SharpGeoApi.Core
 {
     public class Example
     {
-        public IEnumerable<Input> inputs { get; set; }
+        public List<Input> inputs { get; set; }
     }
 
 }

@@ -1,6 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using SharpGeoApi.Core;
+using System.Collections.Generic;
+using System.Net.Mime;
 
 namespace SharpGeoApi.Controllers
 {
@@ -9,18 +12,37 @@ namespace SharpGeoApi.Controllers
     public class FeatureCollectionsController : ControllerBase
     {
         private readonly ILogger<FeatureCollectionsController> _logger;
+        private readonly string externalUri;
+        private readonly IConfiguration _configuration;
 
-        public FeatureCollectionsController(ILogger<FeatureCollectionsController> logger)
+        public FeatureCollectionsController(IConfiguration configuration, ILogger<FeatureCollectionsController> logger)
         {
             _logger = logger;
+            _configuration = configuration;
+            externalUri = configuration["externalUri"];
         }
 
         [HttpGet]
         public FeatureCollections Get()
         {
             var featureCollections = new FeatureCollections();
-            // todo: fill featurecollections
+            var selfLinkAsJson = new Link() { Rel = "self", Type = MediaTypeNames.Application.Json, Title = "This document as JSON", Href = $"{externalUri}/collections?f=json" };
+            var selfLinkAsHtml = new Link() { Rel = "self", Type = "text/html", Title = "This document as HTML", Href = $"{externalUri}/collections?f=html", HrefLang = "en-US" };
+
+            featureCollections.Links = new List<Link>() { selfLinkAsJson, selfLinkAsHtml };
+
             return featureCollections;
         }
+
+        [HttpGet("{id}")]
+        public FeatureCollection Get(string id)
+        {
+            var featureCollection = new FeatureCollection();
+            return featureCollection;
+        }
+
+        // todo: 
+        // /collections/{collectionId}/items
+        // collections/{collectionId}/items/{featureId
     }
 }

@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace SharpGeoApi.Core
 {
     public class RootProcesses
     {
-        public IEnumerable<Process> Processes { get; set; }
+        public List<Process> Processes { get; set; }
     }
-
 
     public class Input1
     {
@@ -24,7 +21,7 @@ namespace SharpGeoApi.Core
         public string id { get; set; }
         public string title { get; set; }
 
-        public Format[] formats { get; set; }
+        public List<Format> formats { get; set; }
 
     }
 

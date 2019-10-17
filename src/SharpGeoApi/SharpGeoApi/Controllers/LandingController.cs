@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using SharpGeoApi.Core;
 using System.Collections.Generic;
@@ -9,19 +10,23 @@ namespace SharpGeoApi.Controllers
     [ApiController]
     [Route("/")]
 
-    public class RootController:ControllerBase
+    public class LandingController:Controller
     {
-        private readonly ILogger<RootController> _logger;
-        private readonly string externalUri = "https://localhost:44332";
-        public RootController(ILogger<RootController> logger)
+        private readonly string externalUri;
+        private readonly IConfiguration _configuration;
+        private readonly ILogger<LandingController> _logger;
+
+        public LandingController(IConfiguration configuration, ILogger<LandingController> logger)
         {
             _logger = logger;
+            _configuration = configuration;
+            externalUri = configuration["externalUri"];
         }
 
         [HttpGet]
-        public RootObject Get()
+        public LandingObject Get()
         {
-            var rootObject = new RootObject();
+            var rootObject = new LandingObject();
             rootObject.Description = "SharpGeoApi provides an API to geospatial data";
             rootObject.Title = "SharpGeoApi Demo instance";
 

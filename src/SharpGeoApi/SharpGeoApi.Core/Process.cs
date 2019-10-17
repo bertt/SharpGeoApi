@@ -8,14 +8,14 @@ namespace SharpGeoApi.Core
         public string Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
-        public IEnumerable<string> Keywords { get; set; }
-        public IEnumerable<Link> Links { get; set; }
-        public IEnumerable<Input> Inputs { get; set; }
-        public IEnumerable<Output> Outputs { get; set; }
+        public List<string> Keywords { get; set; }
+        public List<Link> Links { get; set; }
+        public List<Input> Inputs { get; set; }
+        public List<Output> Outputs { get; set; }
         public Example Example { get; set; }
-        public IEnumerable<string> ItemType { get; set; }
-        public IEnumerable<string> JobControlOptions { get; set; }
-        public IEnumerable<string> OutputTransmission { get; set; }
+        public List<string> ItemType { get; set; }
+        public List<string> JobControlOptions { get; set; }
+        public List<string> OutputTransmission { get; set; }
     }
 
 }

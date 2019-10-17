@@ -2,12 +2,9 @@
 
 namespace SharpGeoApi.Core
 {
-    public class RootObject
+    public class LandingObject
     {
-        public RootObject()
-        {
-        }
-        public IEnumerable<Link> Links { get; set; }
+        public List<Link> Links { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
     }

@@ -4,6 +4,6 @@ namespace SharpGeoApi.Core
 {
     public class Conformance
     {
-        public IEnumerable<string> ConformsTo { get; set; }
+        public List<string> ConformsTo { get; set; }
     }
 }
