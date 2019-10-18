@@ -17,9 +17,10 @@ Developing in Visual Studio Code:
 ```
 $ git clone https://github.com/bertt/SharpGeoApi.git
 $ cd SharpGeoApi
+$ code .
 ```
 
-Press run/debug and browser opens at https://localhost:5001/
+In VSCode press run/debug and browser opens at https://localhost:5001/
 
 ## Content negotiation
 
