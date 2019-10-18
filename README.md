@@ -10,10 +10,20 @@ First milestone: serve local GeoJSON files
 
 Second milestone: Add GDAL/OGR backend for more formats 
 
-## Mediatypes
+## Developing
 
-Default mediatype is application/json. Mediatype text/html is supported in querystring using the f=html parameter or in 
-the request header (accept: text/html).
+Developing in Visual Studio Code:
+
+```
+$ git clone https://github.com/bertt/SharpGeoApi.git
+$ cd SharpGeoApi
+```
+
+Press run/debug and browser opens at https://localhost:5001/
+
+## Content negotiation
+
+Default response content-type is application/json. Mediatype text/html is supported in querystring using the f=html parameter or in the request header (accept: text/html).
 
 ## Sample api requests:
 
