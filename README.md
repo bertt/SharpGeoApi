@@ -6,6 +6,9 @@ Spec: http://docs.opengeospatial.org/is/17-069r3/17-069r3.html
 
 Website: https://bertt.github.io/SharpGeoApi/
 
+(build status)[https://github.com/bertt/SharpGeoApi/workflows/ASP.NET%20Core%20CI/badge.svg]
+
+
 ## Milestones
 
 First milestone: serve local GeoJSON files 
