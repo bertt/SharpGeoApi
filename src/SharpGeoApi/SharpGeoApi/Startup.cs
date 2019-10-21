@@ -5,8 +5,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
+using SharpGeoApi.Core;
+using SharpGeoApi.Formatters;
 using SharpGeoApi.Services.FormatFilters;
-using SharpGeoApi.Services.Formatters;
 
 namespace SharpGeoApi
 {
@@ -22,12 +23,19 @@ namespace SharpGeoApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services
-                .AddControllers(opt => opt.OutputFormatters.Add(new HtmlMediaTypeFormatter(Configuration)))
-                .AddXmlSerializerFormatters().
-                AddJsonOptions(options => {options.JsonSerializerOptions.IgnoreNullValues = true;});
-            // services.AddBrowserDetection();
-            services.AddMvc(opt => opt.FormatterMappings.SetMediaTypeMappingForFormat("html", new Microsoft.Net.Http.Headers.MediaTypeHeaderValue("text/html")));
+            services.AddControllers().AddJsonOptions(options => { options.JsonSerializerOptions.IgnoreNullValues = true; });
+
+            services.AddMvc(options =>
+            {
+                options.OutputFormatters.Add(new RazorOutputFormatter(type =>
+                    typeof(LandingObject).IsAssignableFrom(type) ? "Landing" :
+                    typeof(Conformance).IsAssignableFrom(type) ? "Conformance" :
+                    typeof(FeatureCollections).IsAssignableFrom(type) ? "FeatureCollections" :
+                    typeof(Processes).IsAssignableFrom(type) ? "Processes" :
+                    string.Empty));
+                options.FormatterMappings.SetMediaTypeMappingForFormat("html", new Microsoft.Net.Http.Headers.MediaTypeHeaderValue("text/html"));
+            });
+
             services.Replace(ServiceDescriptor.Singleton<FormatFilter, CustomFormatFilter>());
             services.AddSingleton(Configuration);
         }

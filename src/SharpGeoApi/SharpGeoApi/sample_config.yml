@@ -20,8 +20,8 @@ logging:
 
 metadata:
     identification:
-        title: pygeoapi default instance
-        description: pygeoapi provides an API to geospatial data
+        title: SharpGeoApo default instance
+        description: SharpGeoApi provides an API to geospatial data
         keywords:
             - geospatial
             - data

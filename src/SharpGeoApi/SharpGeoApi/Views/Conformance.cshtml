@@ -1,0 +1,10 @@
+﻿@model SharpGeoApi.Core.Conformance
+
+<h2>Conformance</h2>
+
+<ul>
+    @foreach (var item in Model.ConformsTo)
+    {
+        <li><a href="@item">@item</a></li>
+    }
+</ul>

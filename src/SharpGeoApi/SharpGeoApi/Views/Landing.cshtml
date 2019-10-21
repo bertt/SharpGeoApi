@@ -1,0 +1,34 @@
+﻿@model SharpGeoApi.Core.LandingObject
+
+<h2>@Model.Title</h2>
+
+@Model.Description<br/>
+<br/>
+Terms of service: @Model.TermsOfService<br/>
+<br/>
+License: <a href = "@Model.LicenseUrl">@Model.LicenseName</a><br/>
+<br/>
+
+<h2>Collections</h2>
+
+<a href="@Model.GetUrl("data")">
+    View the collections in this service
+</a>
+
+<h2>Processes</h2>
+
+<a href="@Model.GetUrl("processes")">
+    View the processes in this service
+</a>
+
+<h2>API definition</h2>
+
+<a href="@Model.GetUrl("service-doc")">
+    api
+</a>
+
+<h2>Conformance</h2>
+
+<a href="@Model.GetUrl("conformance")">View the conformance classes of this service</a>
+
+

@@ -21,7 +21,7 @@ namespace SharpGeoApi.Controllers
         }
 
         [HttpGet, FormatFilter]
-        public IEnumerable<Process> Get()
+        public List<Process> Get()
         {
             var process = new Process();
             process.Version = "0.1.0";
@@ -31,9 +31,11 @@ namespace SharpGeoApi.Controllers
             var link = new Link() { Type = "text/html", Rel = "canonical", Title = "Information", Href = $"{externalUri}/processes", HrefLang = "en-US" };
             process.Links = new List<Link>() { link };
             // todo: add inputs, outputs, example, itemtype, jobControlOptions, outputTransmission
-            var processes = new List<Process>() { process };
+            var processes = new Processes();
+            processes.Add(process);
             return processes;
         }
+
     }
 }
 
