@@ -23,9 +23,10 @@ namespace SharpGeoApi
         public void ConfigureServices(IServiceCollection services)
         {
             services
-                .AddControllers(opt => opt.OutputFormatters.Add(new HtmlMediaTypeFormatter()))
+                .AddControllers(opt => opt.OutputFormatters.Add(new HtmlMediaTypeFormatter(Configuration)))
                 .AddXmlSerializerFormatters().
                 AddJsonOptions(options => {options.JsonSerializerOptions.IgnoreNullValues = true;});
+            // services.AddBrowserDetection();
             services.AddMvc(opt => opt.FormatterMappings.SetMediaTypeMappingForFormat("html", new Microsoft.Net.Http.Headers.MediaTypeHeaderValue("text/html")));
             services.Replace(ServiceDescriptor.Singleton<FormatFilter, CustomFormatFilter>());
             services.AddSingleton(Configuration);
