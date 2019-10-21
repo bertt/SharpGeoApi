@@ -1,4 +1,4 @@
-name: SharoGeoApi build
+name: SharpGeoApi build
 
 on: [push]
 
