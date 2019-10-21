@@ -1,34 +1,76 @@
 ﻿@model SharpGeoApi.Core.LandingObject
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>@Model.Title - Home </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="language" content="en-US">
+    <meta name="description" content="@Model.Description">
+    <meta name="keywords" content="@Model.Keywords">
+    <link rel="stylesheet" href="https://unpkg.com/mini.css@3.0.1/dist/mini-default.min.css">
+    <link rel="stylesheet" href="~/default.css" />
+    <!--[if lt IE 9]>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+    <![endif]-->
 
-<h2>@Model.Title</h2>
+</head>
+<body>
 
-@Model.Description<br/>
-<br/>
-Terms of service: @Model.TermsOfService<br/>
-<br/>
-License: <a href = "@Model.LicenseUrl">@Model.LicenseName</a><br/>
-<br/>
+    <section id="identification">
+        <h1 itemprop="name">@Model.Title</h1>
+        <p itemprop="description">
+            @Model.Description
+        </p>
+        <br />
+        <b>Terms of service:</b> @Model.TermsOfService
+        <br />
+        <br />
+    <p itemprop="keywords">
+        @foreach (var item in Model.Keywords)
+        {
+            <mark class="tag">@item</mark>
+        }
+    </p>
+    <br />
+    <b>License:</b>
+    <a href="@Model.LicenseUrl">@Model.LicenseName</a>
+    <br />
+    <br />
+    </section>
+    <section id="collections">
+        <h2>Collections</h2>
+        <p>
+            <a href="@Model.GetUrl("data")">
+                View the collections in this service
+            </a>
+        </p>
+    </section>
 
-<h2>Collections</h2>
+    <section id="processes">
+        <h2>Processes</h2>
+        <p>
+            <a href="@Model.GetUrl("processes")">
+                View the processes in this service
+            </a>
+        </p>
+    </section>
 
-<a href="@Model.GetUrl("data")">
-    View the collections in this service
-</a>
+    <section id="api">
+        <h2>API definition</h2>
+        <p>
+            <a href="@Model.GetUrl("service-doc")">
+                api
+            </a>
+        </p>
+    </section>
 
-<h2>Processes</h2>
+    <section id="conformance">
+        <h2>Conformance</h2>
+        <p>
+            <a href="@Model.GetUrl("conformance")">View the conformance classes of this service</a>
+        </p>
+    </section>
 
-<a href="@Model.GetUrl("processes")">
-    View the processes in this service
-</a>
-
-<h2>API definition</h2>
-
-<a href="@Model.GetUrl("service-doc")">
-    api
-</a>
-
-<h2>Conformance</h2>
-
-<a href="@Model.GetUrl("conformance")">View the conformance classes of this service</a>
-
-
+</body>
+</html>

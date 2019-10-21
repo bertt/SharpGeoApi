@@ -35,6 +35,11 @@ namespace SharpGeoApi.Controllers
             rootObject.LicenseUrl = _configuration["metadata:license:url"];
             rootObject.Title = _configuration["metadata:identification:title"];
             rootObject.Description = _configuration["metadata:identification:description"];
+
+
+            rootObject.Keywords = (from items in _configuration.AsEnumerable() where items.Key.StartsWith("metadata:identification:keywords:") select items.Value).ToList();
+
+
             var selfLinkAsJson = new Link() { Rel = "self", Type = MediaTypeNames.Application.Json, Title = "This document as JSON", Href = $"{externalUri}/" };
             var selfLinkAsHtml = new Link() { Rel = "self", Type = "text/html", Title = "This document as HTML", Href = $"{externalUri}/?f=html", HrefLang = "en-US" };
             var serviceDescLinkAsJson = new Link() { Rel = "service-desc", Type = "application/vnd.oai.openapi+json;version=3.0", Title = "The OpenAPI definition as JSON", Href = $"{externalUri}/api" };

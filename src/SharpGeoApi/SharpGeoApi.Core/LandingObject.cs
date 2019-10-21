@@ -7,6 +7,8 @@ namespace SharpGeoApi.Core
     public class LandingObject
     {
         [JsonIgnore]
+        public List<string> Keywords { get; set; }
+        [JsonIgnore]
         public string TermsOfService { get; set; }
         [JsonIgnore]
         public string LicenseName { get; set; }

@@ -20,7 +20,7 @@ logging:
 
 metadata:
     identification:
-        title: SharpGeoApo default instance
+        title: SharpGeoApi default instance
         description: SharpGeoApi provides an API to geospatial data
         keywords:
             - geospatial

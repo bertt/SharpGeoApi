@@ -27,9 +27,16 @@ $ code .
 
 In VSCode press run/debug and browser opens at https://localhost:5001/
 
+## Configuration
+
+For service configuration a yaml file is used, by default sample_config.yml.
+
+
 ## Content negotiation
 
 Default response content-type is application/json. Mediatype text/html is supported in querystring using the f=html parameter or in the request header (accept: text/html).
+
+For constructing the HTML pages the Razor View Engine is used.
 
 ## Sample api requests:
 
