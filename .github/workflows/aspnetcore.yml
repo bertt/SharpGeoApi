@@ -1,4 +1,4 @@
-name: ASP.NET Core CI
+name: SharoGeoApi build
 
 on: [push]
 
