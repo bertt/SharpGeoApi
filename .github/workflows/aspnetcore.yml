@@ -13,9 +13,9 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.0.100
-    - name: Build with dotnet
+    - name: Building
       run: dotnet build ./src/SharpGeoApi.sln --configuration Release
-    - name: Build and deploy Docker image
+    - name: Deploy to Heroku
       env: 
         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY}}
         APP_NAME: ${{ 'sharpgeoapi' }}
