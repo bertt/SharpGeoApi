@@ -21,8 +21,6 @@ jobs:
         APP_NAME: ${{ 'sharpgeoapi' }}
       run: |
         cd ./src
-        docker build -t $APP_NAME .
-        docker tag $APP_NAME registry.heroku.com/$APP_NAME/web
         docker login --username=_ --password=$HEROKU_API_KEY registry.heroku.com
         heroku container:push web -a $APP_NAME
         heroku container:release web -a $APP_NAME
