@@ -15,6 +15,23 @@ First milestone: serve local GeoJSON files
 
 Second milestone: Add GDAL/OGR backend for more formats 
 
+## Docker 
+
+Building image: 
+
+```
+$ cd src/SharpGeoApi
+$  docker build -f ./sharpgeoapi/dockerfile -t bertt/sharpgeoapi .
+```
+
+Running image:
+
+```
+$ docker run -it -p 5000:80 bertt/sharpgeoapi 
+```
+
+And point the browser to http://localhost:5000/
+
 ## Developing
 
 Developing in Visual Studio Code:
