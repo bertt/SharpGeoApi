@@ -17,12 +17,7 @@ Second milestone: Add GDAL/OGR backend for more formats
 
 ## Docker 
 
-Building image: 
-
-```
-$ cd src/SharpGeoApi
-$  docker build -f ./sharpgeoapi/dockerfile -t bertt/sharpgeoapi .
-```
+Image on Docker hub: https://cloud.docker.com/u/bertt/repository/docker/bertt/sharpgeoapi
 
 Running image:
 
@@ -31,6 +26,13 @@ $ docker run -it -p 5000:80 bertt/sharpgeoapi
 ```
 
 And point the browser to http://localhost:5000/
+
+Building image: 
+
+```
+$ cd src/SharpGeoApi
+$ docker build -f ./sharpgeoapi/dockerfile -t bertt/sharpgeoapi .
+```
 
 ## Developing
 
