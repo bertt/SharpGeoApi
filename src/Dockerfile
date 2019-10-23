@@ -4,11 +4,9 @@ WORKDIR /app
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.0-buster AS build
 WORKDIR /src
-COPY ["SharpGeoApi/SharpGeoApi.Services.csproj", "SharpGeoApi/"]
-COPY ["SharpGeoApi.Core/SharpGeoApi.Core.csproj", "SharpGeoApi.Core/"]
-RUN dotnet restore "SharpGeoApi/SharpGeoApi.Services.csproj"
 COPY . .
-WORKDIR "/src/SharpGeoApi"
+RUN dotnet restore "SharpGeoApi.Services/SharpGeoApi.Services.csproj"
+WORKDIR "/src/SharpGeoApi.Services"
 RUN dotnet build "SharpGeoApi.Services.csproj" -c Release -o /app/build
 
 FROM build AS publish
