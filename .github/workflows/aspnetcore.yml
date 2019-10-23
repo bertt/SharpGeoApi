@@ -24,6 +24,7 @@ jobs:
         docker build -f ./sharpgeoapi/dockerfile -t $APP_NAME
         docker tag $APP_NAME registry.heroku.com/$APP_NAME/web
         docker login --username=_ --password=$HEROKU_API_KEY registry.heroku.com
+        heroku container:login
         docker push registry.heroku.com/$APP_NAME/web
         heroku container:release web -a $APP_NAME
 
