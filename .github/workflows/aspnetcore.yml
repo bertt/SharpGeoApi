@@ -16,6 +16,13 @@ jobs:
         dotnet-version: 3.0.100
     - name: Build app
       run: dotnet build ./src/SharpGeoApi.sln --configuration Release
+    - name: Publish to Docker
+      uses: elgohr/Publish-Docker-Github-Action@master
+      with:
+        name: bertt/sharpgeoapi
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }} 
+         workdir: src     
     - name: Deploy app to Heroku
       env: 
         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY}}
