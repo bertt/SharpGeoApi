@@ -15,14 +15,3 @@ jobs:
         dotnet-version: 3.0.100
     - name: Build with dotnet
       run: dotnet build ./src/SharpGeoApi/SharpGeoApi.sln --configuration Release
-    - name: Build and deploy the Docker image
-      env: 
-        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY}}
-        APP_NAME: ${{ 'sharpgeoapi' }}
-      run: |
-        cd ./src/SharpGeoApi
-        docker build . -t $APP_NAME -f ./SharpGeoApi/Dockerfile
-        docker login --username=_ --password=$HEROKU_API_KEY registry.heroku.com
-        docker tag $APP_NAME registry.heroku.com/$APP_NAME/web
-        heroku container:push web -a $APP_NAME
-        heroku container:release web -a $APP_NAME
