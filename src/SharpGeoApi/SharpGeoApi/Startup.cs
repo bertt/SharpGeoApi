@@ -50,7 +50,8 @@ namespace SharpGeoApi
                 app.UseDeveloperExceptionPage();
             }
 
-           // app.UseHttpsRedirection();
+            // app.UseHttpsRedirection();
+            app.UseHsts();
 
             app.UseRouting();
 
