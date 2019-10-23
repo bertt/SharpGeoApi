@@ -8,14 +8,15 @@ jobs:
     runs-on: ubuntu-16.04
     
     steps:
-    - uses: actions/checkout@v1
-    - name: Setup .NET Core
+    - name: Checkout code
+      uses: actions/checkout@v1
+    - name: Install dependencies
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.0.100
-    - name: Building
+    - name: Build app
       run: dotnet build ./src/SharpGeoApi.sln --configuration Release
-    - name: Deploy to Heroku
+    - name: Deploy app to Heroku
       env: 
         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY}}
         APP_NAME: ${{ 'sharpgeoapi' }}
