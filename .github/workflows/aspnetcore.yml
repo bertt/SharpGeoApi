@@ -19,7 +19,7 @@ jobs:
       env: 
         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY}}
         APP_NAME: ${{ 'sharpgeoapi' }}
-      run:
+      run: |
         cd ./src/SharpGeoApi
         docker build -f ./sharpgeoapi/dockerfile -t $APP_NAME
         docker tag $APP_NAME registry.heroku.com/$APP_NAME/web
