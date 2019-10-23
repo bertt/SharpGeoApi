@@ -10,9 +10,9 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/src/SharpGeoApi/SharpGeoApi/bin/Debug/netcoreapp3.0/SharpGeoApi.Services.dll",
+            "program": "${workspaceFolder}/src/SharpGeoApi.Services/bin/Debug/netcoreapp3.0/SharpGeoApi.Services.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/src/SharpGeoApi/SharpGeoApi",
+            "cwd": "${workspaceFolder}/src/SharpGeoApi.Services",
             "stopAtEntry": false,
             // Enable launching a web browser when ASP.NET Core starts. For more information: https://aka.ms/VSCode-CS-LaunchJson-WebBrowser
             "serverReadyAction": {
