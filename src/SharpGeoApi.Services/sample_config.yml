@@ -34,7 +34,7 @@ metadata:
         url: https://creativecommons.org/licenses/by/4.0/
     provider:
         name: Organization Name
-        url: https://pygeoapi.io
+        url: https://bertt.github.io/SharpGeoApi/
     contact:
         name: Lastname, Firstname
         position: Position Title
