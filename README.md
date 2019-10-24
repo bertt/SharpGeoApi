@@ -16,7 +16,7 @@ Second milestone: Add GDAL/OGR backend for more formats
 
 ## Docker 
 
-Image on Docker hub: https://cloud.docker.com/u/bertt/repository/docker/bertt/sharpgeoapi
+Image on Docker hub: https://hub.docker.com/r/bertt/sharpgeoapi
 
 Running image:
 
@@ -54,7 +54,7 @@ this workflow does the following:
 
 - Build code
 
-- Publish Docker image (https://cloud.docker.com/u/bertt/repository/docker/bertt/sharpgeoapi)
+- Publish Docker image (https://hub.docker.com/r/bertt/sharpgeoapi)
 
 - Deploys to Heroku (https://sharpgeoapi.herokuapp.com/)
 
