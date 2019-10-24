@@ -47,7 +47,7 @@ In VSCode press run/debug and browser opens at https://localhost:5001/
 
 ## Continous deployment
 
-There is a Github Actions workflow defined in [aspnetcore.yml](../.github/workflows/aspnetcore.yml). On Git push
+There is a Github Actions workflow defined in [aspnetcore.yml](.github/workflows/aspnetcore.yml). On Git push
 this workflow does the following:
 
 - Checkout code
