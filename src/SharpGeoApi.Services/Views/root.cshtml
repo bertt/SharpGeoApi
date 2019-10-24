@@ -3,11 +3,11 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>@Model.Title - Home</title>
+    <title>@Model.Identification.Title - Home</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="language" content="en-US">
-    <meta name="description" content="@Model.Description">
-    <meta name="keywords" content="@Model.Keywords">
+    <meta name="description" content="@Model.Identification.Description">
+    <meta name="keywords" content="@Model.Identification.Keywords">
     <link rel="stylesheet" href="https://unpkg.com/mini.css@3.0.1/dist/mini-default.min.css">
     <link rel="stylesheet" href="~/default.css" />
     <!--[if lt IE 9]>
@@ -17,25 +17,46 @@
 </head>
 <body>
     <section id="identification">
-        <h1 itemprop="name">@Model.Title</h1>
+        <h1 itemprop="name">@Model.Identification.Title</h1>
         <p itemprop="description">
-            @Model.Description
+            @Model.Identification.Description
         </p>
+        <b>Terms of service:</b> @Model.Identification.TermsOfService
         <br />
-        <b>Terms of service:</b> @Model.TermsOfService
+        <p itemprop="keywords">
+            @foreach (var item in Model.Identification.Keywords)
+            {
+                <mark class="tag">@item</mark>
+            }
+        </p>
+    </section>
+    <section id="license">
         <br />
+        <b>License:</b>
+        <a href="@Model.License.Url">@Model.License.Name</a>
         <br />
-    <p itemprop="keywords">
-        @foreach (var item in Model.Keywords)
-        {
-            <mark class="tag">@item</mark>
-        }
-    </p>
-    <br />
-    <b>License:</b>
-    <a href="@Model.LicenseUrl">@Model.LicenseName</a>
-    <br />
-    <br />
+    </section>
+    <section id="Provider">
+        <br />
+        <b>Provider:</b>
+        <a href="@Model.Provider.Url">@Model.Provider.Name</a><br/>
+    </section>
+    <br/>
+    <section id="Contact">
+        <b>Contact:</b><br />
+        Name: @Model.Contact.Name<br />
+        Position: @Model.Contact.Position<br />
+        City: @Model.Contact.City<br />
+        State/Province: @Model.Contact.StateOrProvince<br />
+        Postal code: @Model.Contact.PostalCode<br />
+        Country: @Model.Contact.Country<br />
+        Phone: @Model.Contact.Phone<br />
+        Fax: @Model.Contact.Fax<br />
+        E-mail: @Model.Contact.Email<br />
+        Url: @Model.Contact.Url<br />
+        Hours: @Model.Contact.Hours<br />
+        Instructions: @Model.Contact.Instructions<br />
+        Role: @Model.Contact.Role<br />
     </section>
     <section id="collections">
         <h2>Collections</h2>
@@ -45,7 +66,6 @@
             </a>
         </p>
     </section>
-
     <section id="processes">
         <h2>Processes</h2>
         <p>
