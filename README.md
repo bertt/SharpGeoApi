@@ -62,7 +62,7 @@ this workflow does the following:
 
 For service configuration a yaml file is used, by default sample_config.yml.
 
-Configuration values can be overrriden with setting environment values. Example of setting ExternalUri setting
+Configuration values can be overriden with setting environment values. Example of setting ExternalUri setting
 in Heroku:
 
 ![alt text](external_uri_settings.png "External Uri settings")
