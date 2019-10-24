@@ -2,11 +2,11 @@
 
 OGC compliant Server providing an API to geospatial data 
 
-Spec: http://docs.opengeospatial.org/is/17-069r3/17-069r3.html
-
 Live demo: https://sharpgeoapi.herokuapp.com/
 
 [![Actions Status](https://github.com/bertt/SharpGeoApi/workflows/SharpGeoApi%20build/badge.svg)](https://github.com/bertt/SharpGeoApi/actions)
+
+Spec: http://docs.opengeospatial.org/is/17-069r3/17-069r3.html
 
 ## Milestones
 
@@ -54,7 +54,7 @@ this workflow does the following:
 
 - Build code
 
-- Build Docker image and publish to Docker Hub
+- Publish Docker image (https://cloud.docker.com/u/bertt/repository/docker/bertt/sharpgeoapi)
 
 - Deploys to Heroku (https://sharpgeoapi.herokuapp.com/)
 
@@ -62,13 +62,12 @@ this workflow does the following:
 
 For service configuration a yaml file is used, by default sample_config.yml.
 
-Configuration values can be overriden with setting environment values. Example of setting ExternalUri setting
+Configuration values can be overriden by setting environment values. Example of setting ExternalUri setting
 in Heroku:
 
 ![alt text](external_uri_settings.png "External Uri settings")
 
 Using this method, all outgoing links to resources are prefixed with root url 'https://sharpgeoapi.herokuapp.com'.
-
 
 ## Content negotiation
 
@@ -80,14 +79,14 @@ For constructing the HTML pages the Razor View Engine is used.
 
 / : Returns root page
 
-/openapi: returns OpenApi spec
+/openapi: returns OpenApi spec (todo)
 
 /conformance: returns conformance doc
 
 /processes: returns processes 
 
-/collections: returns all collections
+/collections: returns all collections (todo)
 
-/collections/{name}: return collection with id = name
+/collections/{name}: return collection with id = name (todo)
 
-/collections/{name}/items: return items of collection with id = name
+/collections/{name}/items: return items of collection with id = name (todo)
