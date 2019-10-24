@@ -5,14 +5,14 @@ using Microsoft.Extensions.Logging;
 namespace SharpGeoApi.Controllers
 {
     [ApiController]
-    [Route("api")]
-    public class ApiController : ControllerBase
+    [Route("openapi")]
+    public class OpenApiController : ControllerBase
     {
         private readonly string externalUri;
         private readonly IConfiguration _configuration;
-        private readonly ILogger<ApiController> _logger;
+        private readonly ILogger<OpenApiController> _logger;
 
-        public ApiController(IConfiguration configuration, ILogger<ApiController> logger)
+        public OpenApiController(IConfiguration configuration, ILogger<OpenApiController> logger)
         {
             _logger = logger;
             _configuration = configuration;

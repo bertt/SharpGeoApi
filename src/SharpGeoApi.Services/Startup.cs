@@ -30,7 +30,7 @@ namespace SharpGeoApi
             services.AddMvc(options =>
             {
                 options.OutputFormatters.Add(new RazorOutputFormatter(type =>
-                    typeof(LandingObject).IsAssignableFrom(type) ? "Landing" :
+                    typeof(Root).IsAssignableFrom(type) ? "Root" :
                     typeof(Conformance).IsAssignableFrom(type) ? "Conformance" :
                     typeof(FeatureCollections).IsAssignableFrom(type) ? "FeatureCollections" :
                     typeof(Processes).IsAssignableFrom(type) ? "Processes" :
@@ -50,7 +50,6 @@ namespace SharpGeoApi
                 app.UseDeveloperExceptionPage();
             }
 
-            // app.UseHttpsRedirection();
             app.UseHsts();
 
             app.UseRouting();

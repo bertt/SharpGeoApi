@@ -11,6 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharpGeoApi.Tests", "SharpG
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{6571A952-0CF7-46B8-98FB-A29F31A1448F}"
 	ProjectSection(SolutionItems) = preProject
+		..\docs\external_uri_settings.png = ..\docs\external_uri_settings.png
 		..\README.md = ..\README.md
 	EndProjectSection
 EndProject

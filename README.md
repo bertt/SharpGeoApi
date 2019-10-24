@@ -4,11 +4,9 @@ OGC compliant Server providing an API to geospatial data
 
 Spec: http://docs.opengeospatial.org/is/17-069r3/17-069r3.html
 
-Website: https://bertt.github.io/SharpGeoApi/
+Live demo: https://sharpgeoapi.herokuapp.com/
 
 [![Actions Status](https://github.com/bertt/SharpGeoApi/workflows/SharpGeoApi%20build/badge.svg)](https://github.com/bertt/SharpGeoApi/actions)
-
-Live demo: https://sharpgeoapi.herokuapp.com/
 
 ## Milestones
 
@@ -47,9 +45,29 @@ $ code .
 
 In VSCode press run/debug and browser opens at https://localhost:5001/
 
+## Continous deployment
+
+There is a Github Actions workflow defined in [aspnetcore.yml](../.github/workflows/aspnetcore.yml). On Git push
+this workflow does the following:
+
+- Checkout code
+
+- Build code
+
+- Build Docker image and publish to Docker Hub
+
+- Deploys to Heroku (https://sharpgeoapi.herokuapp.com/)
+
 ## Configuration
 
 For service configuration a yaml file is used, by default sample_config.yml.
+
+Configuration values can be overrriden with setting environment values. Example of setting ExternalUri setting
+in Heroku:
+
+![alt text](external_uri_settings.png "External Uri settings")
+
+Using this method, all outgoing links to resources are prefixed with root url 'https://sharpgeoapi.herokuapp.com'.
 
 
 ## Content negotiation
@@ -60,9 +78,9 @@ For constructing the HTML pages the Razor View Engine is used.
 
 ## Sample api requests:
 
-/ : Returns landing page
+/ : Returns root page
 
-/api: returns OpenApi spec
+/openapi: returns OpenApi spec
 
 /conformance: returns conformance doc
 

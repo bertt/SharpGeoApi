@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 
 namespace SharpGeoApi.Core
 {
-    public class LandingObject
+    public class Root
     {
         [JsonIgnore]
         public List<string> Keywords { get; set; }
