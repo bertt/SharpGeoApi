@@ -2,7 +2,7 @@
 {
     public class Spatial
     {
-        public float[][] Bbox { get; set; }
+        public double[] Bbox { get; set; }
         public string Crs { get; set; }
     }
 }

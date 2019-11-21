@@ -15,12 +15,12 @@ namespace SharpGeoApi.Controllers
     {
         private readonly ILogger<FeatureCollectionsController> _logger;
         private readonly string externalUri;
-        private readonly IConfiguration _configuration;
+        private readonly List<Dataset> datasets;
 
-        public FeatureCollectionsController(IConfiguration configuration, IOptions<List<Dataset>> settings, ILogger<FeatureCollectionsController> logger)
+        public FeatureCollectionsController(IConfiguration configuration, IOptions<List<Dataset>> datasets, ILogger<FeatureCollectionsController> logger)
         {
             _logger = logger;
-            _configuration = configuration;
+            this.datasets = datasets.Value;
             externalUri = configuration["externalUri"];
         }
 
@@ -29,20 +29,19 @@ namespace SharpGeoApi.Controllers
         {
             var featureCollections = new FeatureCollections();
 
-            var datasets = (from items in _configuration.AsEnumerable() where items.Key.StartsWith("datasets:") && items.Key.EndsWith(":description")  select items).ToList();
-
-            // SqlMethods.
-
+            var fcs = new List<FeatureCollection>();
             foreach (var dataset in datasets)
             {
-                var key = dataset.Key;
+                var fc = new FeatureCollection();
+                fc.Id = dataset.Id;
+                fc.Description = dataset.Description;
+                fc.Title = dataset.Title;
+                fc.Links = dataset.Links;
+                fc.Extent = dataset.Extent;
+                fcs.Add(fc);
             }
-            var featureCollection = new FeatureCollection();
-            featureCollection.Description = "test";
-            featureCollection.Id = "0";
-            featureCollections.Collections.Add(featureCollection);
+            featureCollections.Collections = fcs;
 
-            // featureCollection.extent.
             var selfLinkAsJson = new Link() { Rel = "self", Type = MediaTypeNames.Application.Json, Title = "This document as JSON", Href = $"{externalUri}/collections?f=json" };
             var selfLinkAsHtml = new Link() { Rel = "self", Type = "text/html", Title = "This document as HTML", Href = $"{externalUri}/collections?f=html", HrefLang = "en-US" };
 
