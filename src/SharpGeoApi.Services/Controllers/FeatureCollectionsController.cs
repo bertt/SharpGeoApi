@@ -29,18 +29,7 @@ namespace SharpGeoApi.Controllers
         {
             var featureCollections = new FeatureCollections();
 
-            var fcs = new List<FeatureCollection>();
-            foreach (var dataset in datasets)
-            {
-                var fc = new FeatureCollection();
-                fc.Id = dataset.Id;
-                fc.Description = dataset.Description;
-                fc.Title = dataset.Title;
-                fc.Links = dataset.Links;
-                fc.Extent = dataset.Extent;
-                fcs.Add(fc);
-            }
-            featureCollections.Collections = fcs;
+            featureCollections.Collections = datasets;
 
             var selfLinkAsJson = new Link() { Rel = "self", Type = MediaTypeNames.Application.Json, Title = "This document as JSON", Href = $"{externalUri}/collections?f=json" };
             var selfLinkAsHtml = new Link() { Rel = "self", Type = "text/html", Title = "This document as HTML", Href = $"{externalUri}/collections?f=html", HrefLang = "en-US" };

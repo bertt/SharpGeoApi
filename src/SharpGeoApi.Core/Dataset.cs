@@ -9,6 +9,8 @@ namespace SharpGeoApi.Core
         public string Description { get; set; }
         public List<string> Keywords { get; set; }
         public List<Link> Links { get; set; }
+        public string ItemType { get; set; }
+
         public Extent Extent { get; set; }
 
         public DatasetProvider Provider { get; set; }
