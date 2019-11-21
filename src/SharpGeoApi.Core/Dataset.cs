@@ -4,11 +4,13 @@ namespace SharpGeoApi.Core
 {
     public class Dataset
     {
-        public string id { get; set; }
+        public string Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public List<string> Keywords { get; set; }
         public List<Link> Links { get; set; }
         public Extent Extent { get; set; }
+
+        public DatasetProvider Provider { get; set; }
     }
 }

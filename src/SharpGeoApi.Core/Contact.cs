@@ -16,6 +16,5 @@
         public string Hours { get; set; }
         public string Instructions { get; set; }
         public string Role { get; set; }
-
     }
 }

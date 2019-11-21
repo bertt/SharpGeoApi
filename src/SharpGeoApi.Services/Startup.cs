@@ -41,6 +41,8 @@ namespace SharpGeoApi
 
 
             services.Configure<List<Dataset>>(Configuration.GetSection("datasets"));
+            services.Configure<Metadata>(Configuration.GetSection("metadata"));
+
             services.Replace(ServiceDescriptor.Singleton<FormatFilter, CustomFormatFilter>());
             services.AddSingleton(Configuration);
         }
