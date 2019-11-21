@@ -52,7 +52,7 @@ metadata:
         role: pointOfContact
 
 datasets:
-    obs:
+    -   id: obs
         title: Observations
         description: My cool observations
         keywords:
@@ -69,7 +69,7 @@ datasets:
               title: data
               href: https://raw.githubusercontent.com/mapserver/mapserver/branch-7-0/msautotest/wxs/data/obs.csv
               hreflang: en-US
-        extents:
+        extent:
             spatial:
                 bbox: [-180,-90,180,90]
                 crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
@@ -85,7 +85,7 @@ datasets:
                 x_field: long
                 y_field: long
 
-    lakes:
+    -   id: lakes
         title: Large Lakes
         description: lakes of the world, public domain
         keywords:
@@ -96,7 +96,7 @@ datasets:
               title: information
               href: http://www.naturalearthdata.com/
               hreflang: en-US
-        extents:
+        extent:
             spatial:
                 bbox: [-180,-90,180,90]
                 crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
@@ -109,7 +109,7 @@ datasets:
             data: tests/data/ne_110m_lakes.geojson
             id_field: id
      
-    countries:
+    -   id: countries
         title: Countries in the world
         description: Countries of the world
         keywords:
@@ -121,7 +121,7 @@ datasets:
               title: information
               href: http://www.naturalearthdata.com/
               hreflang: en-US
-        extents:
+        extent:
             spatial:
                 bbox: [-180,-90,180,90]
                 crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84

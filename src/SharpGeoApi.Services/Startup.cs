@@ -8,6 +8,7 @@ using Microsoft.Extensions.Hosting;
 using SharpGeoApi.Core;
 using SharpGeoApi.Formatters;
 using SharpGeoApi.Services.FormatFilters;
+using System.Collections.Generic;
 
 namespace SharpGeoApi
 {
@@ -38,6 +39,8 @@ namespace SharpGeoApi
                 options.FormatterMappings.SetMediaTypeMappingForFormat("html", new Microsoft.Net.Http.Headers.MediaTypeHeaderValue("text/html"));
             });
 
+
+            services.Configure<List<Dataset>>(Configuration.GetSection("datasets"));
             services.Replace(ServiceDescriptor.Singleton<FormatFilter, CustomFormatFilter>());
             services.AddSingleton(Configuration);
         }

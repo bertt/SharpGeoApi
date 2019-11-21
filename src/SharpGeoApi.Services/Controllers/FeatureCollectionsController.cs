@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using SharpGeoApi.Core;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Mime;
 
 namespace SharpGeoApi.Controllers
@@ -15,7 +17,7 @@ namespace SharpGeoApi.Controllers
         private readonly string externalUri;
         private readonly IConfiguration _configuration;
 
-        public FeatureCollectionsController(IConfiguration configuration, ILogger<FeatureCollectionsController> logger)
+        public FeatureCollectionsController(IConfiguration configuration, IOptions<List<Dataset>> settings, ILogger<FeatureCollectionsController> logger)
         {
             _logger = logger;
             _configuration = configuration;
@@ -26,6 +28,21 @@ namespace SharpGeoApi.Controllers
         public FeatureCollections Get()
         {
             var featureCollections = new FeatureCollections();
+
+            var datasets = (from items in _configuration.AsEnumerable() where items.Key.StartsWith("datasets:") && items.Key.EndsWith(":description")  select items).ToList();
+
+            // SqlMethods.
+
+            foreach (var dataset in datasets)
+            {
+                var key = dataset.Key;
+            }
+            var featureCollection = new FeatureCollection();
+            featureCollection.Description = "test";
+            featureCollection.Id = "0";
+            featureCollections.Collections.Add(featureCollection);
+
+            // featureCollection.extent.
             var selfLinkAsJson = new Link() { Rel = "self", Type = MediaTypeNames.Application.Json, Title = "This document as JSON", Href = $"{externalUri}/collections?f=json" };
             var selfLinkAsHtml = new Link() { Rel = "self", Type = "text/html", Title = "This document as HTML", Href = $"{externalUri}/collections?f=html", HrefLang = "en-US" };
 
