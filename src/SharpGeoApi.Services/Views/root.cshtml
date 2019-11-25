@@ -1,23 +1,6 @@
 ﻿@model SharpGeoApi.Core.Root
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>@Model.Metadata.Identification.Title - Home</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="language" content="en-US">
-    <meta name="description" content="@Model.Metadata.Identification.Description">
-    <meta name="keywords" content="@Model.Metadata.Identification.Keywords">
-    <link rel="stylesheet" href="https://unpkg.com/mini.css@3.0.1/dist/mini-default.min.css">
-    <link rel="stylesheet" href="~/default.css" />
-    <!--[if lt IE 9]>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
-    <![endif]-->
-
-</head>
-<body>
+@{Layout = "Layout.cshtml";}
     <section id="identification">
-        <h1 itemprop="name">@Model.Metadata.Identification.Title</h1>
         <p itemprop="description">
             @Model.Metadata.Identification.Description
         </p>
@@ -90,6 +73,3 @@
         Instructions: @Model.Metadata.Contact.Instructions<br />
         Role: @Model.Metadata.Contact.Role<br />
     </section>
-
-</body>
-</html>

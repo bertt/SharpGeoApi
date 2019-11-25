@@ -1,11 +1,8 @@
 ﻿@model SharpGeoApi.Core.Dataset
-<!DOCTYPE html>
-<html lang="en">
-<head>
-</head>
-<body>
-Title: @Model.Title<br/>
-Description: @Model.Description
+@{Layout = "Layout.cshtml";}
 
-</body>
-</html>
+
+<h2>Dataset @Model.Title</h2>
+
+Title: @Model.Title <br />
+Description: @Model.Description
