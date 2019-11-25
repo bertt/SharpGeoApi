@@ -1,5 +1,25 @@
 ﻿@model SharpGeoApi.Core.FeatureCollections
 
-<h2>Collections</h2>
+<h2>Collections in this service</h2>
 
-todo: make page
+
+<table>
+    <caption>Collections</caption>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var collection in Model.Collections)
+        {
+        <tr>
+            <td><a href = "/collections/@collection.Id">@collection.Title</a></td>
+            <td>@collection.Description</td>
+        </tr>
+        }
+        <tr>
+    </tbody>
+</table>
+

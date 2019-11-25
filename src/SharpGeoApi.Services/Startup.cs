@@ -35,6 +35,7 @@ namespace SharpGeoApi
                     typeof(Conformance).IsAssignableFrom(type) ? "Conformance" :
                     typeof(FeatureCollections).IsAssignableFrom(type) ? "FeatureCollections" :
                     typeof(Processes).IsAssignableFrom(type) ? "Processes" :
+                    typeof(Dataset).IsAssignableFrom(type) ? "Dataset" :
                     string.Empty));
                 options.FormatterMappings.SetMediaTypeMappingForFormat("html", new Microsoft.Net.Http.Headers.MediaTypeHeaderValue("text/html"));
             });

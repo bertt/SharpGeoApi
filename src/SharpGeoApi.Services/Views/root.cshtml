@@ -30,34 +30,6 @@
             }
         </p>
     </section>
-    <section id="license">
-        <br />
-        <b>License:</b>
-        <a href="@Model.Metadata.License.Url">@Model.Metadata.License.Name</a>
-        <br />
-    </section>
-    <section id="Provider">
-        <br />
-        <b>Provider:</b>
-        <a href="@Model.Metadata.Provider.Url">@Model.Metadata.Provider.Name</a><br/>
-    </section>
-    <br/>
-    <section id="Contact">
-        <b>Contact:</b><br />
-        Name: @Model.Metadata.Contact.Name<br />
-        Position: @Model.Metadata,Contact.Position<br />
-        City: @Model.Metadata.Contact.City<br />
-        State/Province: @Model.Metadata.Contact.StateOrProvince<br />
-        Postal code: @Model.Metadata.Contact.PostalCode<br />
-        Country: @Model.Metadata.Contact.Country<br />
-        Phone: @Model.Metadata.Contact.Phone<br />
-        Fax: @Model.Metadata.Contact.Fax<br />
-        E-mail: @Model.Metadata.Contact.Email<br />
-        Url: @Model.Metadata.Contact.Url<br />
-        Hours: @Model.Metadata.Contact.Hours<br />
-        Instructions: @Model.Metadata.Contact.Instructions<br />
-        Role: @Model.Metadata.Contact.Role<br />
-    </section>
     <section id="collections">
         <h2>Collections</h2>
         <p>
@@ -89,6 +61,34 @@
         <p>
             <a href="@Model.GetUrl("conformance")">View the conformance classes of this service</a>
         </p>
+    </section>
+    <section id="license">
+        <br />
+        <b>License:</b>
+        <a href="@Model.Metadata.License.Url">@Model.Metadata.License.Name</a>
+        <br />
+    </section>
+    <section id="Provider">
+        <br />
+        <b>Provider:</b>
+        <a href="@Model.Metadata.Provider.Url">@Model.Metadata.Provider.Name</a><br />
+    </section>
+    <br />
+    <section id="Contact">
+        <b>Contact:</b><br />
+        Name: @Model.Metadata.Contact.Name<br />
+        Position: @Model.Metadata,Contact.Position<br />
+        City: @Model.Metadata.Contact.City<br />
+        State/Province: @Model.Metadata.Contact.StateOrProvince<br />
+        Postal code: @Model.Metadata.Contact.PostalCode<br />
+        Country: @Model.Metadata.Contact.Country<br />
+        Phone: @Model.Metadata.Contact.Phone<br />
+        Fax: @Model.Metadata.Contact.Fax<br />
+        E-mail: @Model.Metadata.Contact.Email<br />
+        Url: @Model.Metadata.Contact.Url<br />
+        Hours: @Model.Metadata.Contact.Hours<br />
+        Instructions: @Model.Metadata.Contact.Instructions<br />
+        Role: @Model.Metadata.Contact.Role<br />
     </section>
 
 </body>

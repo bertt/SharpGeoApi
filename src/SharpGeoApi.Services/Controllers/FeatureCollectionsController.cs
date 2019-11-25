@@ -40,10 +40,10 @@ namespace SharpGeoApi.Controllers
         }
 
         [HttpGet("{id}"), FormatFilter]
-        public FeatureCollection Get(string id)
+        public Dataset Get(string id)
         {
-            var featureCollection = new FeatureCollection();
-            return featureCollection;
+            var dataset = (from s in datasets where s.Id == id select s).FirstOrDefault();
+            return dataset;
         }
 
         // todo: 
