@@ -1,3 +1,4 @@
+using GeoJSON.Net.Feature;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Formatters;
@@ -36,6 +37,7 @@ namespace SharpGeoApi
                     typeof(Collections).IsAssignableFrom(type) ? "Collections" :
                     typeof(Processes).IsAssignableFrom(type) ? "Processes" :
                     typeof(Dataset).IsAssignableFrom(type) ? "Dataset" :
+                    typeof(FeatureCollection).IsAssignableFrom(type) ? "FeatureCollection" :
                     string.Empty));
                 options.FormatterMappings.SetMediaTypeMappingForFormat("html", new Microsoft.Net.Http.Headers.MediaTypeHeaderValue("text/html"));
             });

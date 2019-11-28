@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using GeoJSON.Net.Feature;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
@@ -64,11 +65,12 @@ namespace SharpGeoApi.Controllers
 
 
         [HttpGet("{collectionId}/items"), FormatFilter]
-        public bool GetFeatures(string collectionId)
+        public FeatureCollection GetFeatures(string collectionId)
         {
             var dataset = (from s in datasets where s.Id == collectionId select s).FirstOrDefault();
             dataset.Links = GetLinks(dataset);
-            return false;
+
+            return new FeatureCollection();
             // todo: 
             // - open dataset using gdal
             // - get the features of given dataset
@@ -76,11 +78,11 @@ namespace SharpGeoApi.Controllers
         }
 
         [HttpGet("{collectionId}/items/{featureId}"), FormatFilter]
-        public  bool GetFeature(string collectionId, string featureId)
+        public Feature GetFeature(string collectionId, string featureId)
         {
             var dataset = (from s in datasets where s.Id == collectionId select s).FirstOrDefault();
             dataset.Links = GetLinks(dataset);
-            return false;
+            return null;
 
             // todo: get the feature with id=featureId of given dataset
             // return the_feature;
