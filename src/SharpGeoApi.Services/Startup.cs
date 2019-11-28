@@ -40,10 +40,9 @@ namespace SharpGeoApi
                 options.FormatterMappings.SetMediaTypeMappingForFormat("html", new Microsoft.Net.Http.Headers.MediaTypeHeaderValue("text/html"));
             });
 
-
-            services.Configure<List<Dataset>>(Configuration.GetSection("datasets"));
+            var datasets = Configuration.GetSection("datasets");
+            services.Configure<List<Dataset>>(datasets);
             services.Configure<Metadata>(Configuration.GetSection("metadata"));
-
             services.Replace(ServiceDescriptor.Singleton<FormatFilter, CustomFormatFilter>());
             services.AddSingleton(Configuration);
         }
