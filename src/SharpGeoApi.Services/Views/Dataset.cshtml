@@ -4,5 +4,18 @@
 
 <h2>Dataset @Model.Title</h2>
 
-Title: @Model.Title <br />
+Title: @Model.Title
+<br />
 Description: @Model.Description
+<br />
+
+<a href="@Model.Id/items">Browse through the items of collection @Model.Title</a>
+
+<h2>Links</h2>
+
+@foreach (var link in Model.Links)
+{
+    <a href="@link.Href">@link.Title  (@link.Type)</a>
+    <br />
+}
+

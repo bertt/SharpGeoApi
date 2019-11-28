@@ -54,15 +54,36 @@ namespace SharpGeoApi.Controllers
             return featureCollections;
         }
 
-        [HttpGet("{id}"), FormatFilter]
-        public Dataset Get(string id)
+        [HttpGet("{collectionId}"), FormatFilter]
+        public Dataset Get(string collectionId)
         {
-            var dataset = (from s in datasets where s.Id == id select s).FirstOrDefault();
+            var dataset = (from s in datasets where s.Id == collectionId select s).FirstOrDefault();
+            dataset.Links = GetLinks(dataset);
             return dataset;
         }
 
-        // todo: 
-        // /collections/{collectionId}/items
-        // collections/{collectionId}/items/{featureId
+
+        [HttpGet("{collectionId}/items"), FormatFilter]
+        public bool GetFeatures(string collectionId)
+        {
+            var dataset = (from s in datasets where s.Id == collectionId select s).FirstOrDefault();
+            dataset.Links = GetLinks(dataset);
+            return false;
+            // todo: 
+            // - open dataset using gdal
+            // - get the features of given dataset
+            // return the_features;
+        }
+
+        [HttpGet("{collectionId}/items/{featureId}"), FormatFilter]
+        public  bool GetFeature(string collectionId, string featureId)
+        {
+            var dataset = (from s in datasets where s.Id == collectionId select s).FirstOrDefault();
+            dataset.Links = GetLinks(dataset);
+            return false;
+
+            // todo: get the feature with id=featureId of given dataset
+            // return the_feature;
+        }
     }
 }
