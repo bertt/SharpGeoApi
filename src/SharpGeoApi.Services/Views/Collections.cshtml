@@ -1,4 +1,4 @@
-﻿@model SharpGeoApi.Core.FeatureCollections
+﻿@model SharpGeoApi.Core.Collections
 @{Layout = "Layout.cshtml";}
 
 
@@ -14,11 +14,11 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var collection in Model.Collections)
+        @foreach (var dataset in Model.Datasets)
         {
             <tr>
-                <td><a href="/collections/@collection.Id">@collection.Title</a></td>
-                <td>@collection.Description</td>
+                <td><a href="/collections/@dataset.Id">@dataset.Title</a></td>
+                <td>@dataset.Description</td>
             </tr>
         }
         <tr>

@@ -11,13 +11,13 @@ namespace SharpGeoApi.Controllers
 {
     [ApiController]
     [Route("collections")]
-    public class FeatureCollectionsController : ControllerBase
+    public class CollectionsController : ControllerBase
     {
-        private readonly ILogger<FeatureCollectionsController> _logger;
+        private readonly ILogger<CollectionsController> _logger;
         private readonly string externalUri;
         private readonly List<Dataset> datasets;
 
-        public FeatureCollectionsController(IConfiguration configuration, IOptions<List<Dataset>> datasets, ILogger<FeatureCollectionsController> logger)
+        public CollectionsController(IConfiguration configuration, IOptions<List<Dataset>> datasets, ILogger<CollectionsController> logger)
         {
             _logger = logger;
             this.datasets = datasets.Value;
@@ -35,16 +35,16 @@ namespace SharpGeoApi.Controllers
         }
 
         [HttpGet, FormatFilter]
-        public FeatureCollections Get()
+        public Collections Get()
         {
-            var featureCollections = new FeatureCollections();
+            var featureCollections = new Collections();
 
             foreach(var dataset in datasets)
             {
                 dataset.Links = GetLinks(dataset);
             }
 
-            featureCollections.Collections = datasets;
+            featureCollections.Datasets = datasets;
 
             var selfLinkAsJson = new Link() { Rel = "self", Type = MediaTypeNames.Application.Json, Title = "This document as JSON", Href = $"{externalUri}/collections?f=json" };
             var selfLinkAsHtml = new Link() { Rel = "self", Type = "text/html", Title = "This document as HTML", Href = $"{externalUri}/collections?f=html", HrefLang = "en-US" };

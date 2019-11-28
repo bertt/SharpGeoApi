@@ -33,7 +33,7 @@ namespace SharpGeoApi
                 options.OutputFormatters.Add(new RazorOutputFormatter(type =>
                     typeof(Root).IsAssignableFrom(type) ? "Root" :
                     typeof(Conformance).IsAssignableFrom(type) ? "Conformance" :
-                    typeof(FeatureCollections).IsAssignableFrom(type) ? "FeatureCollections" :
+                    typeof(Collections).IsAssignableFrom(type) ? "Collections" :
                     typeof(Processes).IsAssignableFrom(type) ? "Processes" :
                     typeof(Dataset).IsAssignableFrom(type) ? "Dataset" :
                     string.Empty));
