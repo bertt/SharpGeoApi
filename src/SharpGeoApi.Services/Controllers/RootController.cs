@@ -36,14 +36,12 @@ namespace SharpGeoApi.Controllers
 
         private List<Link> GetLinks(string ExternalUri)
         {
-            var selfLinkAsJson = new Link() { Rel = "self", Type = MediaTypeNames.Application.Json, Title = "This document as JSON", Href = $"{ExternalUri}/" };
-            var selfLinkAsHtml = new Link() { Rel = "self", Type = "text/html", Title = "This document as HTML", Href = $"{ExternalUri}/?f=html", HrefLang = "en-US" };
-            var serviceDescLinkAsJson = new Link() { Rel = "service-desc", Type = "application/vnd.oai.openapi+json;version=3.0", Title = "The OpenAPI definition as JSON", Href = $"{ExternalUri}/api" };
-            var serviceDescLinkAsHtml = new Link() { Rel = "service-doc", Type = "text/html", Title = "The OpenAPI definition as HTML", Href = $"{ExternalUri}/openapi?f=html", HrefLang = "en-US" };
-            var conformanceLink = new Link() { Rel = "conformance", Type = MediaTypeNames.Application.Json, Title = "Conformance", Href = $"{ExternalUri}/conformance" };
-            var dataLink = new Link() { Rel = "data", Type = MediaTypeNames.Application.Json, Title = "Collections", Href = $"{ExternalUri}/collections" };
-            var processesLink = new Link() { Rel = "processes", Type = MediaTypeNames.Application.Json, Title = "Processes", Href = $"{ExternalUri}/processes" };
-            var links = new List<Link>() { selfLinkAsJson, selfLinkAsHtml, serviceDescLinkAsJson, serviceDescLinkAsHtml, conformanceLink, dataLink, processesLink };
+            var selfLink = new Link() { Rel = "self", Title = "This document as JSON", Href = $"{ExternalUri}/" };
+            var serviceDescLink = new Link() { Rel = "service-desc", Title = "The OpenAPI definition as JSON", Href = $"{ExternalUri}/api" };
+            var conformanceLink = new Link() { Rel = "conformance", Title = "Conformance", Href = $"{ExternalUri}/conformance" };
+            var dataLink = new Link() { Rel = "data", Title = "Collections", Href = $"{ExternalUri}/collections" };
+            var processesLink = new Link() { Rel = "processes", Title = "Processes", Href = $"{ExternalUri}/processes" };
+            var links = new List<Link>() { selfLink, serviceDescLink, conformanceLink, dataLink, processesLink };
             return links;
         }
     }

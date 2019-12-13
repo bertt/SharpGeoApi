@@ -27,11 +27,9 @@ namespace SharpGeoApi.Controllers
 
         private List<Link> GetLinks(Dataset dataset)
         {
-            var featuresAsGeoJsonLink = new Link() { Rel = "item", Type = "application/geo+json", Title = "Features as GeoJSON", Href = $"{externalUri}/collections/{dataset.Id}/items?f=json" };
-            var featuresAsHtmlLink = new Link() { Rel = "item", Type = "text/html", Title = "Features as HTML", Href = $"{externalUri}/collections/{dataset.Id}/items?f=html" };
-            var selfAsJsonLink = new Link() { Rel = "self", Type = "application/json", Title = "This document as JSON", Href = $"{externalUri}/collections/{dataset.Id}?f=json" };
-            var selfAsHtmlLink = new Link() { Rel = "self", Type = "text/html", Title = "This document as HTML", Href = $"{externalUri}/collections/{dataset.Id}?f=html" };
-            var links = new List<Link> { featuresAsGeoJsonLink, featuresAsHtmlLink, selfAsJsonLink, selfAsHtmlLink };
+            var featuresLink = new Link() { Rel = "item", Title = "Features", Href = $"{externalUri}/collections/{dataset.Id}/items" };
+            var selfLink = new Link() { Rel = "self", Title = "This document", Href = $"{externalUri}/collections/{dataset.Id}" };
+            var links = new List<Link> { featuresLink,  selfLink};
             return links;
         }
 
@@ -47,10 +45,9 @@ namespace SharpGeoApi.Controllers
 
             featureCollections.Datasets = datasets;
 
-            var selfLinkAsJson = new Link() { Rel = "self", Type = MediaTypeNames.Application.Json, Title = "This document as JSON", Href = $"{externalUri}/collections?f=json" };
-            var selfLinkAsHtml = new Link() { Rel = "self", Type = "text/html", Title = "This document as HTML", Href = $"{externalUri}/collections?f=html", HrefLang = "en-US" };
+            var selfLink = new Link() { Rel = "self", Title = "This document as JSON", Href = $"{externalUri}/collections?f=json" };
 
-            featureCollections.Links = new List<Link>() { selfLinkAsJson, selfLinkAsHtml };
+            featureCollections.Links = new List<Link>() { selfLink};
 
             return featureCollections;
         }

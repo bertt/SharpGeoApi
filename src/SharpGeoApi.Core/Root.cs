@@ -11,7 +11,7 @@ namespace SharpGeoApi.Core
         public string GetUrl(string rel)
         {
             var link = (from links in Links where links.Rel == rel select links.Href).FirstOrDefault();
-            return link + "?f=html";
+            return link;
         }
     }
 }

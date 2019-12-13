@@ -28,7 +28,7 @@ namespace SharpGeoApi.Controllers
             process.Title = "Hello World process";
             process.Description = "Hello World process";
             process.Keywords = new List<string>() { "hello world" };
-            var link = new Link() { Type = "text/html", Rel = "canonical", Title = "Information", Href = $"{externalUri}/processes", HrefLang = "en-US" };
+            var link = new Link() {  Rel = "canonical", Title = "Information", Href = $"{externalUri}/processes", HrefLang = "en-US" };
             process.Links = new List<Link>() { link };
             // todo: add inputs, outputs, example, itemtype, jobControlOptions, outputTransmission
             var processes = new Processes();

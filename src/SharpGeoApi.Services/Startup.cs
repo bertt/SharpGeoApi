@@ -1,14 +1,11 @@
 using GeoJSON.Net.Feature;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
 using SharpGeoApi.Core;
 using SharpGeoApi.Formatters;
-using SharpGeoApi.Services.FormatFilters;
 using System.Collections.Generic;
 
 namespace SharpGeoApi
@@ -39,13 +36,11 @@ namespace SharpGeoApi
                     typeof(Dataset).IsAssignableFrom(type) ? "Dataset" :
                     typeof(FeatureCollection).IsAssignableFrom(type) ? "FeatureCollection" :
                     string.Empty));
-                options.FormatterMappings.SetMediaTypeMappingForFormat("html", new Microsoft.Net.Http.Headers.MediaTypeHeaderValue("text/html"));
             });
 
             var datasets = Configuration.GetSection("datasets");
             services.Configure<List<Dataset>>(datasets);
             services.Configure<Metadata>(Configuration.GetSection("metadata"));
-            services.Replace(ServiceDescriptor.Singleton<FormatFilter, CustomFormatFilter>());
             services.AddSingleton(Configuration);
         }
 

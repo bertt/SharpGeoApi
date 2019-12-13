@@ -71,7 +71,7 @@ Using this method, all outgoing links to resources are prefixed with root url 'h
 
 ## Content negotiation
 
-Default response content-type is application/json. Mediatype text/html is supported in querystring using the f=html parameter or in the request header (accept: text/html).
+Default response content-type is application/json. Mediatype text/html is supported in querystring using the request header (accept: text/html).
 
 For constructing the HTML pages the Razor View Engine is used.
 
