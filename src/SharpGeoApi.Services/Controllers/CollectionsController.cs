@@ -3,10 +3,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Newtonsoft.Json;
 using SharpGeoApi.Core;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Mime;
 
 namespace SharpGeoApi.Controllers
 {
@@ -64,25 +64,32 @@ namespace SharpGeoApi.Controllers
         [HttpGet("{collectionId}/items"), FormatFilter]
         public FeatureCollection GetFeatures(string collectionId)
         {
-            var dataset = (from s in datasets where s.Id == collectionId select s).FirstOrDefault();
-            dataset.Links = GetLinks(dataset);
-
-            return new FeatureCollection();
-            // todo: 
-            // - open dataset using gdal
-            // - get the features of given dataset
-            // return the_features;
+            var dataset = GetDataset(collectionId);
+            var collection = GetFeaturesFromCollection(dataset);
+            return collection;
         }
 
         [HttpGet("{collectionId}/items/{featureId}"), FormatFilter]
         public Feature GetFeature(string collectionId, string featureId)
         {
+            var dataset = GetDataset(collectionId);
+            var features = GetFeaturesFromCollection(dataset).Features;
+            var feature = (from f in features where f.Properties[dataset.Provider.Id_Field].ToString() == featureId select f).FirstOrDefault();
+            return feature;
+        }
+
+        private FeatureCollection GetFeaturesFromCollection(Dataset dataset)
+        {
+            string json = System.IO.File.ReadAllText(dataset.Provider.Data);
+            var collection = JsonConvert.DeserializeObject<FeatureCollection>(json);
+            return collection;
+        }
+
+        private Dataset GetDataset(string collectionId)
+        {
             var dataset = (from s in datasets where s.Id == collectionId select s).FirstOrDefault();
             dataset.Links = GetLinks(dataset);
-            return null;
-
-            // todo: get the feature with id=featureId of given dataset
-            // return the_feature;
+            return dataset;
         }
     }
 }
