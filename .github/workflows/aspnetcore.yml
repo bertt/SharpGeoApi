@@ -13,7 +13,7 @@ jobs:
     - name: Install dependencies
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 3.0.100
+        dotnet-version: 3.1.100
     - name: Build app
       run: dotnet build ./src/SharpGeoApi.sln --configuration Release
     - name: Publish to Docker

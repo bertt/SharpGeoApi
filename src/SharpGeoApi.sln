@@ -16,6 +16,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{6571A952-0CF
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B6F121F8-B0FA-4173-9167-14EF65C61DE6}"
 	ProjectSection(SolutionItems) = preProject
+		..\.github\workflows\aspnetcore.yml = ..\.github\workflows\aspnetcore.yml
 		Dockerfile = Dockerfile
 	EndProjectSection
 EndProject
