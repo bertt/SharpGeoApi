@@ -4,10 +4,6 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UserSecretsId>f4b4bed9-f14b-4fbd-ad4b-b81633f870a1</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
-    <PublishTrimmed>true</PublishTrimmed>
-    <PublishReadyToRun>true</PublishReadyToRun>
-    <PublishSingleFile>false</PublishSingleFile>
-    <CrossGenDuringPublish>false</CrossGenDuringPublish>
   </PropertyGroup>
 
   <ItemGroup>
