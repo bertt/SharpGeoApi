@@ -36,20 +36,21 @@ namespace SharpGeoApi.Formatters
 
             var viewName = _viewNameResolver(context.Object.GetType());
 
-            var viewResult = razorViewEngine.FindView(actionContext, viewName, false);
-
-            if (!viewResult.Success)
+            if (razorViewEngine != null)
             {
-                throw new ArgumentNullException($"{viewName} does not match any available view");
-            }
+                var viewResult = razorViewEngine.FindView(actionContext, viewName, false);
 
-            var viewDictionary = new ViewDataDictionary(new EmptyModelMetadataProvider(), new ModelStateDictionary())
-            {
-                Model = context.Object
-            };
+                if (!viewResult.Success)
+                {
+                    throw new ArgumentNullException($"{viewName} does not match any available view");
+                }
 
-            using (var sw = new StringWriter())
-            {
+                var viewDictionary = new ViewDataDictionary(new EmptyModelMetadataProvider(), new ModelStateDictionary())
+                {
+                    Model = context.Object
+                };
+
+                using var sw = new StringWriter();
                 var viewContext = new ViewContext(
                     actionContext,
                     viewResult.View,
@@ -62,6 +63,7 @@ namespace SharpGeoApi.Formatters
                 await viewResult.View.RenderAsync(viewContext);
 
                 await context.HttpContext.Response.WriteAsync(sw.ToString());
+
             }
         }
     }

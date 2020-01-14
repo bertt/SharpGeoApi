@@ -1,9 +1,12 @@
-using GeoJSON.Net.Feature;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using NetTopologySuite.Features;
+using NetTopologySuite.Geometries;
 using SharpGeoApi.Core;
 using SharpGeoApi.Formatters;
 using System.Collections.Generic;
@@ -37,6 +40,24 @@ namespace SharpGeoApi
                     typeof(FeatureCollection).IsAssignableFrom(type) ? "FeatureCollection" :
                     string.Empty));
             });
+
+            services.AddControllersWithViews().AddNewtonsoftJson();
+            services.AddRazorPages().AddNewtonsoftJson();
+
+
+            services.AddControllers(options => {
+                // Prevent the following exception: 'This method does not     support GeometryCollection arguments' 
+                // See: https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/issues/585 
+                options.ModelMetadataDetailsProviders.Add(new SuppressChildValidationMetadataProvider(typeof(Point)));
+                options.ModelMetadataDetailsProviders.Add(new SuppressChildValidationMetadataProvider(typeof(Coordinate)));
+                options.ModelMetadataDetailsProviders.Add(new SuppressChildValidationMetadataProvider(typeof(LineString)));
+                options.ModelMetadataDetailsProviders.Add(new SuppressChildValidationMetadataProvider(typeof(MultiLineString)));
+            }).AddNewtonsoftJson(options => {
+                foreach (var converter in NetTopologySuite.IO.GeoJsonSerializer.Create(new GeometryFactory(new PrecisionModel(), 4326)).Converters)
+                {
+                    options.SerializerSettings.Converters.Add(converter);
+                }
+            }).SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
 
             var datasets = Configuration.GetSection("datasets");
             services.Configure<List<Dataset>>(datasets);

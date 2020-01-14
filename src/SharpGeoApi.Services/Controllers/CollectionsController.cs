@@ -1,8 +1,9 @@
-﻿using GeoJSON.Net.Feature;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using NetTopologySuite.Features;
+using NetTopologySuite.IO;
 using Newtonsoft.Json;
 using SharpGeoApi.Core;
 using System.Collections.Generic;
@@ -70,18 +71,19 @@ namespace SharpGeoApi.Controllers
         }
 
         [HttpGet("{collectionId}/items/{featureId}"), FormatFilter]
-        public Feature GetFeature(string collectionId, string featureId)
+        public IFeature GetFeature(string collectionId, string featureId)
         {
             var dataset = GetDataset(collectionId);
-            var features = GetFeaturesFromCollection(dataset).Features;
-            var feature = (from f in features where f.Properties[dataset.Provider.Id_Field].ToString() == featureId select f).FirstOrDefault();
+            var features = GetFeaturesFromCollection(dataset);
+            var feature = (from f in features where f.Attributes[dataset.Provider.Id_Field].ToString() == featureId select f).FirstOrDefault();
             return feature;
         }
 
         private FeatureCollection GetFeaturesFromCollection(Dataset dataset)
         {
             string json = System.IO.File.ReadAllText(dataset.Provider.Data);
-            var collection = JsonConvert.DeserializeObject<FeatureCollection>(json);
+            var reader = new GeoJsonReader();
+            var collection = reader.Read<FeatureCollection>(json);
             return collection;
         }
 
